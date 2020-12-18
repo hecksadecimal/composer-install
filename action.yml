@@ -18,6 +18,9 @@ inputs:
     description: >-
       Additional options to pass to Composer (e.g. --ignore-platform-reqs).
     required: false
+  working-directory:
+    description: >-
+      Selects a subdirectory to run composer in
 
 runs:
   using: "node12"
