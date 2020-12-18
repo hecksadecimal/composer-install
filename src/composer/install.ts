@@ -24,8 +24,5 @@ export async function install(
   args.push(...options)
 
   const filteredArgs = args.filter(Boolean)
-  if (workingDirectory != '') {
-    await exec('cd', workingDirectory)
-  }
-  await exec('composer', filteredArgs)
+  await exec('composer', {cwd: workingDirectory}, filteredArgs)
 }
