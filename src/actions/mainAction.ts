@@ -7,6 +7,7 @@ export async function mainAction(): Promise<void> {
   try {
     const composerOptions = getInput('composer-options')
     const inputDependencyVersions = getInput('dependency-versions')
+    const workingDirectory = getInput('working-directory')
 
     const composerCacheDir = await utils.getComposerCacheDir()
     const cleanedDependencyVersions = utils.getDependencyVersions(
@@ -23,7 +24,7 @@ export async function mainAction(): Promise<void> {
       composerCacheKeys.key,
       composerCacheKeys.restoreKeys
     )
-    await composer.install(cleanedDependencyVersions, composerOptions)
+    await composer.install(cleanedDependencyVersions, composerOptions, workingDirectory)
   } catch (error) {
     setFailed(error.message)
   }

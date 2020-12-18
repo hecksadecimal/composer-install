@@ -2,7 +2,8 @@ import {exec} from '@actions/exec'
 
 export async function install(
   dependencyPreference: string,
-  composerOptions = ''
+  composerOptions = '',
+  workingDirectory = ''
 ): Promise<void> {
   const args: string[] = []
   const options: string[] = composerOptions.split(' ')
@@ -23,6 +24,8 @@ export async function install(
   args.push(...options)
 
   const filteredArgs = args.filter(Boolean)
-
+  if (workingDirectory != '') {
+    await exec('cd', workingDirectory)
+  }
   await exec('composer', filteredArgs)
 }
