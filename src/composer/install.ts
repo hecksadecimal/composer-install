@@ -28,6 +28,6 @@ export async function install(
   args.push(...options)
   
   const filteredArgs = args; //args.filter(Boolean)
-  core.debug('Opts: composer ' + filteredArgs.join(" "))
+  core.info('Opts: composer ' + filteredArgs.join(" "))
   await exec('composer', filteredArgs)
 }
