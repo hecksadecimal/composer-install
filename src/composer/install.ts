@@ -20,12 +20,13 @@ export async function install(
       args.push('install')
   }
 
-  args.push('--no-interaction', '--ansi')
   if (workingDirectory != '') {
     args.push('-d ' + workingDirectory)
   }
+  args.push('--no-interaction', '--ansi')
   args.push(...options)
-
+  
   const filteredArgs = args; //args.filter(Boolean)
+  console.log('Opts: composer ' + filteredArgs.join(" "))
   await exec('composer', filteredArgs)
 }
