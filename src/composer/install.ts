@@ -1,4 +1,5 @@
 import {exec} from '@actions/exec'
+import * as core from '@actions/core';
 
 export async function install(
   dependencyPreference: string,
@@ -27,6 +28,6 @@ export async function install(
   args.push(...options)
   
   const filteredArgs = args; //args.filter(Boolean)
-  console.log('Opts: composer ' + filteredArgs.join(" "))
+  core.debug('Opts: composer ' + filteredArgs.join(" "))
   await exec('composer', filteredArgs)
 }
